@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAnalyzer - Code Quality Tool</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #codeanalyzer-container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        #code-input {
+            width: 80%;
+            height: 150px;
+            padding: 10px;
+            margin-top: 20px;
+            box-sizing: border-box;
+        }
+
+        #analysis-results {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ecf0f1;
+        }
+
+        .result h2 {
+            color: #2c3e50;
+        }
+
+        .result p {
+            color: #777;
+        }
+
+        #analyze-button {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="codeanalyzer-container">
+        <h1>CodeAnalyzer - Code Quality Tool</h1>
+        <textarea id="code-input" placeholder="Paste your code here..."></textarea>
+        <button id="analyze-button" onclick="analyzeCode()">Analyze Code</button>
+        <div id="analysis-results"></div>
+
+        <script>
+            function analyzeCode() {
+                const codeInput = document.getElementById('code-input').value;
+                const analysisResults = document.getElementById('analysis-results');
+                analysisResults.innerHTML = ''; // Clear previous results
+
+                // Simulated code analysis (replace this with actual code analysis logic)
+                const metrics = {
+                    linesOfCode: 150,
+                    cyclomaticComplexity: 10,
+                    codeSmells: 3,
+                    duplicatedCode: 5
+                };
+
+                const suggestions = [
+                    "Consider refactoring functions to reduce cyclomatic complexity.",
+                    "Address the code smells to improve maintainability.",
+                    "Explore opportunities to eliminate duplicated code."
+                ];
+
+                // Display analysis results
+                const resultElement = document.createElement('div');
+                resultElement.classList.add('result');
+                resultElement.innerHTML = `
+                    <h2>Code Metrics</h2>
+                    <p>Lines of Code: ${metrics.linesOfCode}</p>
+                    <p>Cyclomatic Complexity: ${metrics.cyclomaticComplexity}</p>
+                    <p>Code Smells: ${metrics.codeSmells}</p>
+                    <p>Duplicated Code: ${metrics.duplicatedCode}</p>
+                    <h2>Suggestions</h2>
+                    <ul>${suggestions.map(suggestion => `<li>${suggestion}</li>`).join('')}</ul>
+                `;
+
+                analysisResults.appendChild(resultElement);
+            }
+        </script>
+    </div>
+</body>
+</html>

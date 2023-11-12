@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteCraft - Your Note-taking App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #notecraft-container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        #note-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            box-sizing: border-box;
+        }
+
+        #note-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .note {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ecf0f1;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div id="notecraft-container">
+        <h1>NoteCraft - Your Note-taking App</h1>
+        <input type="text" id="note-input" placeholder="Write a new note...">
+        <div id="note-list"></div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const noteInput = document.getElementById('note-input');
+                const noteList = document.getElementById('note-list');
+
+                noteInput.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' && noteInput.value.trim() !== '') {
+                        addNote();
+                    }
+                });
+
+                function addNote() {
+                    const noteText = noteInput.value.trim();
+                    const noteElement = document.createElement('div');
+                    noteElement.classList.add('note');
+                    noteElement.textContent = noteText;
+                    noteList.appendChild(noteElement);
+                    noteInput.value = '';
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

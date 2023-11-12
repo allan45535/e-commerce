@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoCraft - Online Photo Editor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #photocraft-container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        #upload-input {
+            display: none;
+        }
+
+        #image-preview {
+            margin-top: 20px;
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        #image-controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .control-button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="photocraft-container">
+        <h1>PhotoCraft - Online Photo Editor</h1>
+        <label for="upload-input" class="control-button">Upload Image</label>
+        <input type="file" id="upload-input" accept="image/*" onchange="loadImage(event)">
+        <div id="image-preview"></div>
+        <div id="image-controls">
+            <button class="control-button" onclick="adjustBrightness()">Adjust Brightness</button>
+            <button class="control-button" onclick="applyFilter()">Apply Filter</button>
+            <button class="control-button" onclick="cropImage()">Crop Image</button>
+        </div>
+
+        <script>
+            function loadImage(event) {
+                const preview = document.getElementById('image-preview');
+                const file = event.target.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            function adjustBrightness() {
+                // Add logic to adjust brightness
+                alert('Adjusting Brightness...');
+            }
+
+            function applyFilter() {
+                // Add logic to apply filter
+                alert('Applying Filter...');
+            }
+
+            function cropImage() {
+                // Add logic to crop image
+                alert('Cropping Image...');
+            }
+        </script>
+    </div>
+</body>
+</html>
